@@ -14,11 +14,9 @@ const GetStatus = ({
         setLoading(true);
         getAmazonStatus().then((data) => {
             if (data.error) {
-                // console.log(data.error);
                 setResponse(data);
                 setLoading(false);
             } else {
-                // console.log(data)
                 setResponse(data);
                 setLoading(false);
             }
@@ -29,11 +27,9 @@ const GetStatus = ({
         setLoading(true);
         getGoogleStatus().then((data) => {
             if (data.error) {
-                // console.log(data.error);
                 setResponse(data)
                 setLoading(false);
             } else {
-                // console.log(data)
                 setResponse(data);
                 console.log(data.duration)
                 setLoading(false);
@@ -46,14 +42,13 @@ const GetStatus = ({
             preloadAmazonStatus();
             setInterval(() =>{
                 preloadAmazonStatus();
-            }, 5000)
+            }, 60000)
         }
         else if(name === "Google") {
             preloadGoogleStatus();
-            // setInterval(() =>{
-            //     preloadGoogleStatus();
-            // }, 5000)
-            // console.log(timer)
+            setInterval(() =>{
+                preloadGoogleStatus();
+            }, 60000)
         }
         else if(name === "all") {
             preloadAmazonStatus();
@@ -66,7 +61,6 @@ const GetStatus = ({
         return (
             <div id="loader" className="text-center m-4">
                 <h2>Loading...<i className="fa fa-spinner fa-pulse"></i> </h2>
-                {/* <i class="fas fa-spinner fa-pulse"></i> */}
             </div>
         );
     }   
